@@ -21,13 +21,17 @@
       text-align: center;
     }
 
-    /* Glass-like Broker Container */
+    /* UPDATED: Centered Glass-like Broker Container */
     .broker-glass-container {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 1000;
       animation: fadeInUp 0.5s ease-out 1s both;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .broker-glass-link {
@@ -84,22 +88,46 @@
       gap: 8px;
     }
 
+    /* NEW: Close button for broker container */
+    .broker-close-btn {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .broker-close-btn:hover {
+      background: rgba(255, 0, 0, 0.2);
+      border-color: rgba(255, 0, 0, 0.3);
+      transform: scale(1.1);
+    }
+
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateX(-50%) translateY(-20px);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0);
       }
     }
 
     /* Mobile responsiveness for glass container */
     @media (max-width: 768px) {
       .broker-glass-container {
-        bottom: 20px;
-        right: 20px;
+        top: 15px;
       }
       
       .broker-glass-link {
@@ -110,12 +138,17 @@
       .broker-glass-icon {
         font-size: 18px;
       }
+      
+      .broker-close-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+      }
     }
 
     @media (max-width: 480px) {
       .broker-glass-container {
-        bottom: 15px;
-        right: 15px;
+        top: 10px;
       }
       
       .broker-glass-link {
@@ -129,6 +162,12 @@
       
       .broker-glass-text::after {
         content: "Broker";
+      }
+      
+      .broker-close-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
       }
     }
 
@@ -200,10 +239,11 @@
       margin-right: 8px;
     }
 
-    .word:nth-child(1) { animation-delay: 3s; }
-    .word:nth-child(2) { animation-delay: 3.5s; }
-    .word:nth-child(3) { animation-delay: 4s; }
-    .word:nth-child(4) { animation-delay: 4.5s; }
+    /* UPDATED: Animation starts after 2 seconds */
+    .word:nth-child(1) { animation-delay: 2s; }
+    .word:nth-child(2) { animation-delay: 2.5s; }
+    .word:nth-child(3) { animation-delay: 3s; }
+    .word:nth-child(4) { animation-delay: 3.5s; }
 
     @keyframes wordFadeIn {
       from {
@@ -556,6 +596,114 @@
       object-fit: cover;
       margin-bottom: 25px;
       border-radius: 20px 20px 0 0;
+    }
+
+    /* MOBILE PHONE FRAME STYLES */
+    .mobile-phone-frame {
+      position: relative;
+      width: 280px;
+      height: 560px;
+      margin: 20px auto 30px;
+      background: #000;
+      border-radius: 40px;
+      padding: 10px;
+      box-shadow: 0 20px 50px rgba(0, 170, 255, 0.3);
+      border: 8px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-phone-frame::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140px;
+      height: 25px;
+      background: #333;
+      border-radius: 0 0 15px 15px;
+      z-index: 10;
+    }
+
+    .mobile-phone-frame::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 5px;
+      background: #333;
+      border-radius: 10px;
+    }
+
+    .mobile-screen {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #00AAFF, #0066FF);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mobile-screen-content {
+      padding: 30px;
+      text-align: center;
+      color: white;
+      z-index: 2;
+    }
+
+    .mobile-screen-icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .mobile-screen-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: white;
+    }
+
+    .mobile-screen-subtitle {
+      font-size: 16px;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .mobile-screen-apps {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .mobile-app-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .mobile-screen-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('4.jpeg') center/cover;
+      opacity: 0.3;
+      border-radius: 30px;
     }
 
     .product-icon {
@@ -1511,7 +1659,7 @@
     .product-selection-card {
       background: rgba(0, 102, 255, 0.05);
       border-radius: 15px;
-      padding: 35px 30px;
+      padding: 30px 25px 35px;
       box-shadow: 0 8px 25px rgba(0, 102, 255, 0.1);
       border: 2px solid rgba(0, 102, 255, 0.2);
       transition: all 0.3s ease;
@@ -1554,23 +1702,32 @@
       background: linear-gradient(135deg, #00AAFF, #66CCFF);
     }
 
-    .product-icon-large {
-      font-size: 60px;
+    /* Product Selection Images */
+    .product-image-container {
+      width: 100%;
+      height: 200px;
       margin-bottom: 20px;
-      height: 90px;
-      width: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #0066FF, #3399FF);
-      color: white;
-      margin-left: auto;
-      margin-right: auto;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      background: rgba(0, 102, 255, 0.05);
+      border: 1px solid rgba(0, 102, 255, 0.1);
     }
 
-    .mobile-card .product-icon-large {
-      background: linear-gradient(135deg, #00AAFF, #66CCFF);
+    .product-selection-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .product-selection-card:hover .product-selection-image {
+      transform: scale(1.05);
+    }
+
+    /* Remove the old icon styles */
+    .product-icon-large {
+      display: none;
     }
 
     .product-selection-title {
@@ -1896,6 +2053,35 @@
         padding: 0 0 50px 0;
       }
 
+      .mobile-phone-frame {
+        width: 240px;
+        height: 480px;
+        margin: 15px auto 25px;
+      }
+
+      .mobile-phone-frame::before {
+        width: 120px;
+        height: 20px;
+      }
+
+      .mobile-screen-icon {
+        font-size: 50px;
+      }
+
+      .mobile-screen-title {
+        font-size: 20px;
+      }
+
+      .mobile-screen-subtitle {
+        font-size: 14px;
+      }
+
+      .mobile-app-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+
       .product-image-full {
         height: 220px;
       }
@@ -2068,10 +2254,8 @@
         padding: 30px 20px;
       }
       
-      .product-icon-large {
-        font-size: 50px;
-        height: 80px;
-        width: 80px;
+      .product-image-container {
+        height: 180px;
       }
       
       .product-selection-title {
@@ -2145,6 +2329,41 @@
       
       .product-card {
         padding: 0 0 50px 0;
+      }
+      
+      .mobile-phone-frame {
+        width: 200px;
+        height: 400px;
+        margin: 10px auto 20px;
+        border-radius: 30px;
+        border-width: 6px;
+      }
+
+      .mobile-phone-frame::before {
+        width: 100px;
+        height: 18px;
+      }
+
+      .mobile-screen {
+        border-radius: 24px;
+      }
+
+      .mobile-screen-icon {
+        font-size: 40px;
+      }
+
+      .mobile-screen-title {
+        font-size: 18px;
+      }
+
+      .mobile-screen-subtitle {
+        font-size: 13px;
+      }
+
+      .mobile-app-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
       }
       
       .product-image-full {
@@ -2223,13 +2442,17 @@
       .feature-item {
         font-size: 14px;
       }
+      
+      .product-image-container {
+        height: 160px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Glass-like Broker Link Container -->
-  <div class="broker-glass-container">
+  <!-- UPDATED: Centered Glass-like Broker Container with Close Button -->
+  <div class="broker-glass-container" id="brokerContainer">
     <a href="https://one.justmarkets.link/a/kss7t06f22" target="_blank" class="broker-glass-link">
       <i class="fas fa-chart-line broker-glass-icon"></i>
       <span class="broker-glass-text">
@@ -2237,6 +2460,9 @@
         <i class="fas fa-external-link-alt"></i>
       </span>
     </a>
+    <div class="broker-close-btn" id="brokerCloseBtn">
+      <i class="fas fa-times"></i>
+    </div>
   </div>
 
   <!-- Main Content Container -->
@@ -2440,9 +2666,33 @@
           </button>
         </div>
         
-        <!-- MOBILE VERSION - UPDATED WITH FULL IMAGE (NO ICON) -->
+        <!-- MOBILE VERSION - UPDATED WITH MOBILE PHONE FRAME -->
         <div class="product-card">
-          <img src="4.jpeg" alt="Mobile Version" class="product-image-full">
+          <!-- Mobile Phone Frame -->
+          <div class="mobile-phone-frame">
+            <div class="mobile-screen">
+              <div class="mobile-screen-bg"></div>
+              <div class="mobile-screen-content">
+                <div class="mobile-screen-icon">
+                  <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 class="mobile-screen-title">PRECISION BLUEPRINT AI</h3>
+                <p class="mobile-screen-subtitle">Mobile Trading Solution</p>
+                <div class="mobile-screen-apps">
+                  <div class="mobile-app-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div class="mobile-app-icon">
+                    <i class="fas fa-bolt"></i>
+                  </div>
+                  <div class="mobile-app-icon">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
           <div class="product-title">Mobile Version</div>
           <div class="product-subtitle">On-The-Go Trading Solution</div>
           
@@ -2698,11 +2948,11 @@
     
     <div class="products-selection-grid">
       
-      <!-- PIP ASSASSIN X-PERT EA PC -->
+      <!-- PIP ASSASSIN X-PERT EA PC - WITH IMAGE 20.jpg -->
       <div class="product-selection-card pc-card">
         <div class="product-badge">BEST SELLER</div>
-        <div class="product-icon-large">
-          <i class="fas fa-bolt"></i>
+        <div class="product-image-container">
+          <img src="20.jpg" alt="PIP ASSASSIN X-PERT EA PC" class="product-selection-image">
         </div>
         <h2 class="product-selection-title">PIP ASSASSIN X-PERT EA PC</h2>
         <div class="product-compatibility">Works on MT4 & MT5</div>
@@ -2728,18 +2978,18 @@
         
         <div class="product-price">R 1200</div>
         
-        <button class="select-button" onclick="selectProduct('PIP ASSASSIN X-PERT EA PC', 1200, 'PC')">
+        <a href="https://pay.yoco.com/elite-market-traders-academy1" target="_blank" class="select-button">
           SELECT THIS PRODUCT
-        </button>
+        </a>
       </div>
       
-      <!-- PRECISION BLUEPRINT AI PC -->
+      <!-- PRECISION BLUEPRINT AI PC - WITH IMAGE 21.jpg -->
       <div class="product-selection-card pc-card">
         <div class="product-badge">AI POWERED</div>
-        <div class="product-icon-large">
-          <i class="fas fa-brain"></i>
+        <div class="product-image-container">
+          <img src="21.jpg" alt="PRECISION BLUEPRINT AI PC" class="product-selection-image">
         </div>
-        <h2 class="product-selection-title">JUDASTHEE-CODER AI PC</h2>
+        <h2 class="product-selection-title">PRECISION BLUEPRINT AI PC (MT4 & MT5)</h2>
         <div class="product-compatibility">MT4 & MT5 Compatible</div>
         
         <div class="product-features">
@@ -2763,16 +3013,16 @@
         
         <div class="product-price">R 1000</div>
         
-        <button class="select-button" onclick="selectProduct('JUDASTHEE-CODER AI PC', 1000, 'PC')">
+        <a href="https://pay.yoco.com/elite-market-traders-academy1" target="_blank" class="select-button">
           SELECT THIS PRODUCT
-        </button>
+        </a>
       </div>
       
-      <!-- TRADEMASTER SCALPER PC 2026 -->
+      <!-- TRADEMASTER SCALPER PC 2026 - WITH IMAGE 22.jpg -->
       <div class="product-selection-card pc-card">
         <div class="product-badge">NEW 2026</div>
-        <div class="product-icon-large">
-          <i class="fas fa-rocket"></i>
+        <div class="product-image-container">
+          <img src="22.jpg" alt="TRADEMASTER SCALPER PC 2026" class="product-selection-image">
         </div>
         <h2 class="product-selection-title">TRADEMASTER SCALPER PC 2026</h2>
         <div class="product-compatibility">MT5 ONLY</div>
@@ -2798,16 +3048,16 @@
         
         <div class="product-price">R 600</div>
         
-        <button class="select-button" onclick="selectProduct('TRADEMASTER SCALPER PC 2026', 600, 'PC')">
+        <a href="https://pay.yoco.com/elite-market-traders-academy1" target="_blank" class="select-button">
           SELECT THIS PRODUCT
-        </button>
+        </a>
       </div>
       
-      <!-- ALGO SCALPER EA PC -->
+      <!-- ALGO SCALPER EA PC - WITH IMAGE 23.jpg -->
       <div class="product-selection-card pc-card">
         <div class="product-badge">BEGINNER FRIENDLY</div>
-        <div class="product-icon-large">
-          <i class="fas fa-chart-bar"></i>
+        <div class="product-image-container">
+          <img src="23.jpg" alt="ALGO SCALPER EA PC" class="product-selection-image">
         </div>
         <h2 class="product-selection-title">ALGO SCALPER EA PC</h2>
         <div class="product-compatibility">MT4 ONLY</div>
@@ -2833,9 +3083,9 @@
         
         <div class="product-price">R 600</div>
         
-        <button class="select-button" onclick="selectProduct('ALGO SCALPER EA PC', 600, 'PC')">
+        <a href="https://pay.yoco.com/elite-market-traders-academy1" target="_blank" class="select-button">
           SELECT THIS PRODUCT
-        </button>
+        </a>
       </div>
       
     </div>
@@ -2865,8 +3115,8 @@
       <!-- PIP ASSASSIN X-PERT EA MOBILE -->
       <div class="product-selection-card mobile-card">
         <div class="product-badge">POPULAR</div>
-        <div class="product-icon-large">
-          <i class="fas fa-mobile-alt"></i>
+        <div class="product-image-container">
+          <img src="20.jpg" alt="PIP ASSASSIN X-PERT EA MOBILE" class="product-selection-image">
         </div>
         <h2 class="product-selection-title">PIP ASSASSIN X-PERT EA MOBILE</h2>
         <div class="product-compatibility">Mobile Trading Platform</div>
@@ -2892,18 +3142,18 @@
         
         <div class="product-price">R 900</div>
         
-        <button class="select-button" onclick="selectProduct('PIP ASSASSIN X-PERT EA MOBILE', 900, 'Mobile')">
+        <a href="https://pay.yoco.com/elite-market-traders-academy1" target="_blank" class="select-button">
           SELECT THIS PRODUCT
-        </button>
+        </a>
       </div>
       
-      <!-- PRECISION BLUEPRINT AI MOBILE -->
+      <!-- PRECISION BLUEPRINT AI MOBILE - UPDATED -->
       <div class="product-selection-card mobile-card">
         <div class="product-badge">AI POWERED</div>
-        <div class="product-icon-large">
-          <i class="fas fa-brain"></i>
+        <div class="product-image-container">
+          <img src="21.jpg" alt="PRECISION BLUEPRINT AI MOBILE" class="product-selection-image">
         </div>
-        <h2 class="product-selection-title">JUDASTHEE-CODER AI MOBILE</h2>
+        <h2 class="product-selection-title">PRECISION BLUEPRINT AI MOBILE</h2>
         <div class="product-compatibility">Mobile Trading</div>
         
         <div class="product-features">
@@ -2927,9 +3177,9 @@
         
         <div class="product-price">R 750</div>
         
-        <button class="select-button" onclick="selectProduct('JUDASTHEE-CODER AI MOBILE', 750, 'Mobile')">
+        <a href="https://pay.yoco.com/elite-market-traders-academy1" target="_blank" class="select-button">
           SELECT THIS PRODUCT
-        </button>
+        </a>
       </div>
       
     </div>
@@ -3102,13 +3352,25 @@
     document.addEventListener('DOMContentLoaded', function() {
       
       // ====================
-      // 1. TAGLINE ANIMATION - WORDS APPEAR ONE BY ONE
+      // 1. TAGLINE ANIMATION - WORDS APPEAR ONE BY ONE AFTER 2 SECONDS
       // ====================
-      // The animation is handled purely by CSS with staggered delays
-      // Words will appear: UPDATED (3s), PROFITABLE (3.5s), FAST (4s), PRECISE (4.5s)
+      // The animation is handled by CSS with these delays:
+      // Words will appear: UPDATED (2s), PROFITABLE (2.5s), FAST (3s), PRECISE (3.5s)
       
       // ====================
-      // 2. INFO ARROW FUNCTIONALITY
+      // 2. CLOSE BUTTON FOR BROKER CONTAINER
+      // ====================
+      const brokerCloseBtn = document.getElementById('brokerCloseBtn');
+      const brokerContainer = document.getElementById('brokerContainer');
+      
+      if (brokerCloseBtn && brokerContainer) {
+        brokerCloseBtn.addEventListener('click', () => {
+          brokerContainer.style.display = 'none';
+        });
+      }
+      
+      // ====================
+      // 3. INFO ARROW FUNCTIONALITY
       // ====================
       
       // PC Version Info Arrow
@@ -3146,7 +3408,7 @@
       }
 
       // ====================
-      // 3. PRODUCT NAVIGATION
+      // 4. PRODUCT NAVIGATION
       // ====================
       
       let selectedProduct = null;
@@ -3168,7 +3430,7 @@
       }
 
       // ====================
-      // 4. IMAGE CAROUSEL
+      // 5. IMAGE CAROUSEL
       // ====================
       
       const carousel = document.querySelector('.carousel');
@@ -3255,7 +3517,7 @@
       }
 
       // ====================
-      // 5. FAQ ACCORDION
+      // 6. FAQ ACCORDION
       // ====================
       
       document.querySelectorAll('.faq-question').forEach(question => {
@@ -3288,7 +3550,7 @@
       });
 
       // ====================
-      // 6. TERMS & CONDITIONS
+      // 7. TERMS & CONDITIONS
       // ====================
       
       const termsHeader = document.querySelector('.terms-header');
@@ -3318,7 +3580,7 @@
       });
 
       // ====================
-      // 7. WHATSAPP & TELEGRAM BUTTONS
+      // 8. WHATSAPP & TELEGRAM BUTTONS
       // ====================
       
       const whatsappButton = document.querySelector('.whatsapp-button');
@@ -3337,7 +3599,7 @@
       }
 
       // ====================
-      // 8. FOOTER SOCIAL ICONS
+      // 9. FOOTER SOCIAL ICONS
       // ====================
       
       document.querySelectorAll('.footer-social-icon').forEach(icon => {
@@ -3352,6 +3614,30 @@
       if (firstQuestion) {
         setTimeout(() => firstQuestion.click(), 500);
       }
+      
+      // ====================
+      // 10. UPDATE SELECT BUTTONS TO USE YOCO LINK
+      // ====================
+      
+      // Update all SELECT THIS PRODUCT buttons to use YoCo payment link
+      document.querySelectorAll('.select-button').forEach(button => {
+        // Only update if it's not already an anchor tag
+        if (button.tagName === 'BUTTON') {
+          const parent = button.parentElement;
+          const text = button.textContent;
+          const href = 'https://pay.yoco.com/elite-market-traders-academy1';
+          
+          // Replace button with anchor tag
+          const newLink = document.createElement('a');
+          newLink.href = href;
+          newLink.target = '_blank';
+          newLink.className = button.className;
+          newLink.innerHTML = button.innerHTML;
+          newLink.textContent = text;
+          
+          parent.replaceChild(newLink, button);
+        }
+      });
       
     });
 
@@ -3429,10 +3715,8 @@
     // Function to confirm purchase
     function confirmPurchase() {
       if (selectedProduct) {
-        alert(`Thank you for selecting ${selectedProduct.name}!\n\nPrice: R ${selectedProduct.price}\n\nIn a real implementation, this would redirect you to a secure checkout page.`);
-        
-        // In real implementation, uncomment this:
-        // window.location.href = `/checkout?product=${encodeURIComponent(selectedProduct.name)}&price=${selectedProduct.price}&type=${selectedProduct.type}`;
+        // Redirect to YoCo payment page
+        window.open('https://pay.yoco.com/elite-market-traders-academy1', '_blank');
         
         closeModal();
       }
